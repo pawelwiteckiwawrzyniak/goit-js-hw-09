@@ -24,6 +24,7 @@ const options = {
       let chosenDate = new Date(selectedDates[0]);
       ms = chosenDate.getTime() - options.defaultDate.getTime();
       startBtn.removeAttribute('disabled');
+      setTime();
     } else {
       Notiflix.Notify.failure('Please choose a date in the future');
     }
