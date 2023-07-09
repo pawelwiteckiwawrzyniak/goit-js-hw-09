@@ -69,11 +69,11 @@ function addLeadingZero(value) {
 }
 
 function setTime() {
-  const { days, hours, minutes, seconds } = convertMs(ms);
-  daysValue.textContent = addLeadingZero(days);
-  hoursValue.textContent = addLeadingZero(hours);
-  minutesValue.textContent = addLeadingZero(minutes);
-  secondsValue.textContent = addLeadingZero(seconds);
+  const remainingTime = convertMs(ms);
+  daysValue.textContent = addLeadingZero(remainingTime.days);
+  hoursValue.textContent = addLeadingZero(remainingTime.hours);
+  minutesValue.textContent = addLeadingZero(remainingTime.minutes);
+  secondsValue.textContent = addLeadingZero(remainingTime.seconds);
 }
 
 function updateTime() {
