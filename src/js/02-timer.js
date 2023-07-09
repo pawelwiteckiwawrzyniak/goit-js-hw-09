@@ -2,6 +2,18 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
+const inputDate = document.querySelector('#datetime-picker');
+const startBtn = document.querySelector('[data-start]');
+const timer = document.querySelector('.timer');
+const timerElement = document.querySelectorAll('.field');
+const timerValue = document.querySelectorAll('.field .value');
+const daysValue = document.querySelector('[data-days]');
+const hoursValue = document.querySelector('[data-hours]');
+const minutesValue = document.querySelector('[data-minutes]');
+const secondsValue = document.querySelector('[data-seconds]');
+let ms;
+let timerId;
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -18,18 +30,7 @@ const options = {
   },
 };
 
-const inputDate = document.querySelector('#datetime-picker');
-const startBtn = document.querySelector('[data-start]');
-const timer = document.querySelector('.timer');
-const timerElement = document.querySelectorAll('.field');
-const timerValue = document.querySelectorAll('.field .value');
-const daysValue = document.querySelector('[data-days]');
-const hoursValue = document.querySelector('[data-hours]');
-const minutesValue = document.querySelector('[data-minutes]');
-const secondsValue = document.querySelector('[data-seconds]');
 const flatpickr = flatpickr(inputDate, options);
-let ms;
-let timerId;
 
 startBtn.setAttribute('disabled', '');
 
