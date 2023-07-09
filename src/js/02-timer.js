@@ -35,7 +35,7 @@ const flatpickr = flatpickr(inputDate, options);
 
 startBtn.setAttribute('disabled', '');
 
-inputDate.style.margin = '20px 0 0 20px';
+/* inputDate.style.margin = '20px 0 0 20px';
 timer.style.display = 'flex';
 timer.style.margin = '20px 20px';
 timerElement.forEach(e => {
@@ -48,7 +48,7 @@ timerElement.forEach(e => {
 });
 timerValue.forEach(e => {
   e.style.fontSize = '30px';
-});
+}); */
 
 function convertMs(ms) {
   const second = 1000;
