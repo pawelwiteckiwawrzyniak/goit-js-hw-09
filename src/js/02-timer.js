@@ -14,6 +14,24 @@ const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0] < options.defaultDate) {
+      Notiflix.Notify.failure('Please choose a date in the future');
+      return;
+    }
+    let chosenDate = new Date(selectedDates[0]);
+    ms = chosenDate.getTime() - options.defaultDate.getTime();
+    startBtn.removeAttribute('disabled');
+  },
+};
+
+const flatpickr = flatpickr(inputDate, options);
+
 startBtn.setAttribute('disabled', '');
 
 inputDate.style.margin = '20px 0 0 20px';
@@ -73,21 +91,3 @@ function startCountdown() {
 }
 
 startBtn.addEventListener('click', () => startCountdown());
-
-const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    if (selectedDates[0] < options.defaultDate) {
-      Notiflix.Notify.failure('Please choose a date in the future');
-      return;
-    }
-    let chosenDate = new Date(selectedDates[0]);
-    ms = chosenDate.getTime() - options.defaultDate.getTime();
-    startBtn.removeAttribute('disabled');
-  },
-};
-
-const flatpickr = flatpickr(inputDate, options);
