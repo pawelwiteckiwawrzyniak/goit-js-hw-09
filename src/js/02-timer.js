@@ -14,25 +14,6 @@ const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
-const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    if (selectedDates[0] < options.defaultDate) {
-      Notiflix.Notify.failure('Please choose a date in the future');
-      return;
-    }
-    let chosenDate = new Date(selectedDates[0]);
-    ms = chosenDate.getTime() - options.defaultDate.getTime();
-    startBtn.removeAttribute('disabled');
-    setTime();
-  },
-};
-
-const flatpickr = flatpickr(inputDate, options);
-
 startBtn.setAttribute('disabled', '');
 
 inputDate.style.margin = '20px 0 0 20px';
@@ -69,11 +50,11 @@ function addLeadingZero(value) {
 }
 
 function setTime() {
-  const remainingTime = convertMs(ms);
-  daysValue.textContent = addLeadingZero(remainingTime.days);
-  hoursValue.textContent = addLeadingZero(remainingTime.hours);
-  minutesValue.textContent = addLeadingZero(remainingTime.minutes);
-  secondsValue.textContent = addLeadingZero(remainingTime.seconds);
+  const { days, hours, minutes, seconds } = convertMs(ms);
+  daysValue.textContent = addLeadingZero(days);
+  hoursValue.textContent = addLeadingZero(hours);
+  minutesValue.textContent = addLeadingZero(minutes);
+  secondsValue.textContent = addLeadingZero(seconds);
 }
 
 function updateTime() {
@@ -92,3 +73,22 @@ function startCountdown() {
 }
 
 startBtn.addEventListener('click', () => startCountdown());
+
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0] < options.defaultDate) {
+      Notiflix.Notify.failure('Please choose a date in the future');
+      return;
+    }
+    let chosenDate = new Date(selectedDates[0]);
+    ms = chosenDate.getTime() - options.defaultDate.getTime();
+    startBtn.removeAttribute('disabled');
+    setTime();
+  },
+};
+
+const flatpickr = flatpickr(inputDate, options);
