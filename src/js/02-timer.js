@@ -14,22 +14,22 @@ const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
-/* const options = {
+const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0] > options.defaultDate) {
-      let chosenDate = new Date(selectedDates[0]);
-      ms = chosenDate.getTime() - options.defaultDate.getTime();
-      startBtn.removeAttribute('disabled');
-      setTime();
-    } else {
+    if (selectedDates[0] < options.defaultDate) {
       Notiflix.Notify.failure('Please choose a date in the future');
+      return;
     }
+    let chosenDate = new Date(selectedDates[0]);
+    ms = chosenDate.getTime() - options.defaultDate.getTime();
+    startBtn.removeAttribute('disabled');
+    setTime();
   },
-}; */
+};
 
 const flatpickr = flatpickr(inputDate, options);
 
@@ -77,12 +77,12 @@ function setTime() {
 }
 
 function updateTime() {
-  if (ms > 1000) {
-    ms -= 1000;
-    setTime();
-  } else {
+  if (ms < 1000) {
     clearInterval(timerId);
+    return;
   }
+  ms -= 1000;
+  setTime();
 }
 
 function startCountdown() {
