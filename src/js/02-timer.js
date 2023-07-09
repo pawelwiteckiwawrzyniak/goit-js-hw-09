@@ -27,9 +27,9 @@ const daysValue = document.querySelector('[data-days]');
 const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
+const flatpickr = flatpickr(inputDate, options);
 let ms;
 let timerId;
-const flatpickr = flatpickr(inputDate, options);
 
 startBtn.setAttribute('disabled', '');
 
