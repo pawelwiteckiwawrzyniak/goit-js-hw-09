@@ -87,7 +87,6 @@ const options = {
     let chosenDate = new Date(selectedDates[0]);
     ms = chosenDate.getTime() - options.defaultDate.getTime();
     startBtn.removeAttribute('disabled');
-    setTime();
   },
 };
 
