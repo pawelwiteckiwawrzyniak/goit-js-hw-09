@@ -14,7 +14,7 @@ const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
-var options = {
+let options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
@@ -27,6 +27,7 @@ var options = {
     let chosenDate = new Date(selectedDates[0]);
     ms = chosenDate.getTime() - options.defaultDate.getTime();
     startBtn.removeAttribute('disabled');
+    setTime();
   },
 };
 
