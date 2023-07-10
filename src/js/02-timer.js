@@ -14,6 +14,21 @@ const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
+inputDate.style.margin = '20px 0 0 20px';
+timer.style.display = 'flex';
+timer.style.margin = '20px 20px';
+timerElement.forEach(e => {
+  e.style.display = 'flex';
+  e.style.flexDirection = 'column';
+  e.style.marginRight = '20px';
+  e.style.textAlign = 'center';
+  e.style.textTransform = 'uppercase';
+  e.style.width = '70px';
+});
+timerValue.forEach(e => {
+  e.style.fontSize = '30px';
+});
+
 let options = {
   enableTime: true,
   time_24hr: true,
@@ -30,25 +45,6 @@ let options = {
     startBtn.removeAttribute('disabled');
   },
 };
-
-const flatpickr = flatpickr(inputDate, options);
-
-startBtn.setAttribute('disabled', '');
-
-inputDate.style.margin = '20px 0 0 20px';
-timer.style.display = 'flex';
-timer.style.margin = '20px 20px';
-timerElement.forEach(e => {
-  e.style.display = 'flex';
-  e.style.flexDirection = 'column';
-  e.style.marginRight = '20px';
-  e.style.textAlign = 'center';
-  e.style.textTransform = 'uppercase';
-  e.style.width = '70px';
-});
-timerValue.forEach(e => {
-  e.style.fontSize = '30px';
-});
 
 function convertMs(ms) {
   const second = 1000;
@@ -91,4 +87,6 @@ function startCountdown() {
   inputDate.setAttribute('disabled', '');
 }
 
+startBtn.setAttribute('disabled', '');
 startBtn.addEventListener('click', () => startCountdown());
+const flatpickr = flatpickr(inputDate, options);
