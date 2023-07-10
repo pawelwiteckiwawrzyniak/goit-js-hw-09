@@ -60,7 +60,7 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function addLeadingZero(value) {
+/* function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
@@ -70,7 +70,7 @@ function setTime() {
   hoursValue.textContent = addLeadingZero(hours);
   minutesValue.textContent = addLeadingZero(minutes);
   secondsValue.textContent = addLeadingZero(seconds);
-}
+} */
 
 function updateTime() {
   if (ms < 1000) {
