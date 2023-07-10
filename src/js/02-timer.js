@@ -14,7 +14,7 @@ const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
-const options = {
+let options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
