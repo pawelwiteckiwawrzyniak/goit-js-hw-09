@@ -36,7 +36,6 @@ let options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     ms = selectedDates[0].getTime() - options.defaultDate.getTime();
-
     if (selectedDates[0] < options.defaultDate) {
       Notiflix.Notify.failure('Please choose a date in the future');
       return;
@@ -58,11 +57,11 @@ function convertMs(ms) {
   let seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
-};
+}
 
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
-};
+}
 
 function setTime() {
   let { days, hours, minutes, seconds } = convertMs(ms);
@@ -70,7 +69,7 @@ function setTime() {
   hoursValue.textContent = addLeadingZero(hours);
   minutesValue.textContent = addLeadingZero(minutes);
   secondsValue.textContent = addLeadingZero(seconds);
-};
+}
 
 function updateTime() {
   if (ms < 1000) {
@@ -79,13 +78,13 @@ function updateTime() {
   }
   ms -= 1000;
   setTime();
-};
+}
 
 function startCountdown() {
   timerId = setInterval(updateTime, 1000);
   startBtn.setAttribute('disabled', '');
   inputDate.setAttribute('disabled', '');
-};
+}
 
 startBtn.setAttribute('disabled', '');
 startBtn.addEventListener('click', () => startCountdown());
