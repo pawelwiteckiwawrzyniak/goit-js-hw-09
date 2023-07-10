@@ -19,7 +19,7 @@ function createPromise(position, delay) {
   });
 }
 
-function start(event) {
+function startCreating(event) {
   event.preventDefault();
 
   const delayFirst = Number(form.delay.value);
@@ -42,4 +42,4 @@ function start(event) {
 }
 
 const btn = document.querySelector('button');
-btn.addEventListener('click', start);
+btn.addEventListener('click', startCreating);
