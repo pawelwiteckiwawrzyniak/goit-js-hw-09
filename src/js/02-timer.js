@@ -2,15 +2,15 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
-let inputDate = document.querySelector('#datetime-picker');
-let startBtn = document.querySelector('[data-start]');
-let timer = document.querySelector('.timer');
-let timerElement = document.querySelectorAll('.field');
-let timerValue = document.querySelectorAll('.field .value');
-let daysValue = document.querySelector('[data-days]');
-let hoursValue = document.querySelector('[data-hours]');
-let minutesValue = document.querySelector('[data-minutes]');
-let secondsValue = document.querySelector('[data-seconds]');
+const inputDate = document.querySelector('#datetime-picker');
+const startBtn = document.querySelector('[data-start]');
+const timer = document.querySelector('.timer');
+const timerElement = document.querySelectorAll('.field');
+const timerValue = document.querySelectorAll('.field .value');
+const daysValue = document.querySelector('[data-days]');
+const hoursValue = document.querySelector('[data-hours]');
+const minutesValue = document.querySelector('[data-minutes]');
+const secondsValue = document.querySelector('[data-seconds]');
 let ms;
 let timerId;
 
@@ -29,7 +29,7 @@ timerValue.forEach(e => {
   e.style.fontSize = '30px';
 });
 
-let options = {
+const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
@@ -46,15 +46,15 @@ let options = {
 };
 
 function convertMs(ms) {
-  let second = 1000;
-  let minute = second * 60;
-  let hour = minute * 60;
-  let day = hour * 24;
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
 
-  let days = Math.floor(ms / day);
-  let hours = Math.floor((ms % day) / hour);
-  let minutes = Math.floor(((ms % day) % hour) / minute);
-  let seconds = Math.floor((((ms % day) % hour) % minute) / second);
+  const days = Math.floor(ms / day);
+  const hours = Math.floor((ms % day) / hour);
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
 }
@@ -64,7 +64,7 @@ function addLeadingZero(value) {
 }
 
 function setTime() {
-  let { days, hours, minutes, seconds } = convertMs(ms);
+  const { days, hours, minutes, seconds } = convertMs(ms);
   daysValue.textContent = addLeadingZero(days);
   hoursValue.textContent = addLeadingZero(hours);
   minutesValue.textContent = addLeadingZero(minutes);
@@ -88,4 +88,4 @@ function startCountdown() {
 
 startBtn.setAttribute('disabled', '');
 startBtn.addEventListener('click', () => startCountdown());
-let flatpickr = flatpickr(inputDate, options);
+flatpickr(inputDate, options);
